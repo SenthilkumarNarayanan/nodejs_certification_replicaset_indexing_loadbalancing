@@ -1,0 +1,248 @@
+# Product API – Node.js, MongoDB, Redis, PM2
+
+## Overview
+
+This project is a high-performance Product API built using Node.js and Express.
+It demonstrates industry-level backend practices including database indexing, Redis caching, and horizontal scaling using PM2 cluster mode.
+
+The API retrieves product data from MongoDB and caches responses in Redis to reduce database load and improve response times.
+
+---
+
+## Tech Stack
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* Redis (Caching Layer)
+* PM2 (Process Manager & Clustering)
+
+---
+
+## Features
+
+* REST API for product retrieval
+* Redis caching for faster responses
+* MongoDB indexing for optimized queries
+* PM2 cluster mode for multi-core scalability
+* Modular project structure
+* Error handling and logging
+
+---
+
+## Project Structure
+
+```
+project-root
+│
+├── config
+│   ├── db.js
+│   └── redis.js
+│
+├── controllers
+│   └── productController.js
+│
+├── models
+│   └── Product.js
+│
+├── routes
+│   └── productRoutes.js
+│
+├── ecosystem.config.js
+├── server.js
+├── package.json
+└── README.md
+```
+
+---
+
+## Installation
+
+Clone the repository
+
+```
+git clone <repository-url>
+cd product-api
+```
+
+Install dependencies
+
+```
+npm install
+```
+
+---
+
+## MongoDB Setup
+
+Start MongoDB
+
+```
+mongod --port 27017 --dbpath C:\data\PORT_27017
+```
+
+Example connection string
+
+```
+mongodb://localhost:27017/productDB
+```
+
+---
+
+## Redis Setup
+
+Start Redis server
+
+```
+redis-server
+```
+
+Check Redis connection
+
+```
+redis-cli
+ping
+```
+
+Expected response
+
+```
+PONG
+```
+
+---
+
+## Run the Application
+
+Start server
+
+```
+node server.js
+```
+
+Server runs on
+
+```
+http://localhost:5000
+```
+
+---
+
+## Run using PM2 (Production Mode)
+
+Install PM2
+
+```
+npm install pm2 -g
+```
+
+Start application
+
+```
+pm2 start ecosystem.config.js
+```
+
+Check running processes
+
+```
+pm2 list
+```
+
+View logs
+
+```
+pm2 logs
+```
+
+---
+
+## API Endpoint
+
+### Get Product by ID
+
+```
+GET /api/product/:id
+```
+
+Example
+
+```
+http://localhost:5000/api/product/69b66f87fc1141fc0762a081
+```
+
+---
+
+## Redis Caching Flow
+
+1. API request received
+2. Redis cache checked
+3. If cache exists → return cached response
+4. If cache miss → fetch from MongoDB
+5. Save result in Redis with expiration
+6. Return response
+
+Cache TTL: 60 seconds
+
+---
+
+## MongoDB Indexing
+
+Indexes improve query performance.
+
+Example
+
+```
+productSchema.index({ Supc: 1 });
+```
+
+Check indexes
+
+```
+db.products.getIndexes()
+```
+
+---
+
+## Useful PM2 Commands
+
+Restart application
+
+```
+pm2 restart product-api
+```
+
+Stop application
+
+```
+pm2 stop product-api
+```
+
+Delete process
+
+```
+pm2 delete product-api
+```
+
+Monitor CPU and memory
+
+```
+pm2 monit
+```
+
+---
+
+## Future Improvements
+
+* Add authentication with JWT
+* Implement API rate limiting
+* Add logging with Winston
+* Add Docker containerization
+* Add API documentation using Swagger
+
+---
+
+## Author
+
+Senthil Kumar
+Backend Developer – Node.js
