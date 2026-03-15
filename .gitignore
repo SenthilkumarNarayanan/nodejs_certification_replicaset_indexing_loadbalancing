@@ -1,0 +1,50 @@
+# Node modules
+
+node_modules/
+
+# Environment variables
+
+.env
+
+# Logs
+
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# PM2
+
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# IDE files
+
+.vscode/
+.idea/
+
+# Build folders
+
+dist/
+build/
+
+# Redis dump
+
+dump.rdb
+
+# MongoDB local files
+
+/data/
+
+# Temporary files
+
+tmp/
+temp/
